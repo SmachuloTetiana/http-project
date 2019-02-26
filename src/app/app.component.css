@@ -1,0 +1,7 @@
+.nav-item.active {
+    background: #007bff;
+}
+
+.nav-item.active a {
+    color: #FFF;
+}
