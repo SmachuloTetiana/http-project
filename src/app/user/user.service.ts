@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class UserService {
@@ -12,9 +13,10 @@ export class UserService {
         }
     ];
 
-    constructor() {}
+    constructor(private http: HttpClient) {}
 
     getAllUsers() {
-        return this.users;
+        // return this.users;
+        return this.http.get('https://jsonplaceholder.typicode.com/users');
     }
 }
