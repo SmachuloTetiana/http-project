@@ -19,4 +19,12 @@ export class UserService {
         // return this.users;
         return this.http.get('https://jsonplaceholder.typicode.com/users');
     }
+
+    sendServers(servers: any[]) {
+        return this.http.post('https://users-91eaa.firebaseio.com/data.json', servers);
+    }
+
+    getServers() {
+        return this.http.get('https://users-91eaa.firebaseio.com/data.json');
+    }
 }

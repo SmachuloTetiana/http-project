@@ -17,10 +17,24 @@ export class HomeComponent implements OnInit {
     this.getWeather();
   }
 
-  getWeather() {
-    this.http.get(this.apiUrl).subscribe(data => {
-      this.weather = data;
-      console.log(this.weather);
-    });
+  async getWeather(): Promise<any> {
+    this.weather = await this.http.get(this.apiUrl).toPromise();
+
+    console.log(this.weather);
+    // .subscribe(data => {
+    //   this.weather = data;
+    //   console.log(this.weather);
+    // });
+
+    // console.log('test');
+
+    // apiService.getDocument()
+    //   .then(documents => {
+    //   console.log(documents)
+
+    //   return apiService.updateUser({documents});
+    //   })
+    //   .then(user => console.log(user))
+    //   .catch(error => console.log(error));
   }
 }

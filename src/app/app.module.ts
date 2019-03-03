@@ -12,10 +12,10 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { HomeComponent } from './home/home.component';
 import { UserService } from './user/user.service';
 
-const appRoutes: Routes =[
+const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'user', component: UserListComponent }
-]
+];
 
 @NgModule({
   declarations: [

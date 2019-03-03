@@ -1,3 +1,6 @@
 <ul *ngFor="let user of list_users">
   <li>{{ user.id }} ) {{ user.name }}</li>
 </ul>
+
+<button type="button" (click)="onPost()">Send Servers</button>
+<button (click)="onGetfirebase()">Get Servers</button>
