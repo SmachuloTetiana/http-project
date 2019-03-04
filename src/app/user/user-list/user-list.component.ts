@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { Response } from '@angular/http';
+import { Response } from '@angular/http';  
+import { Router } from "@angular/router";  
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { Services } from '@angular/core/src/view';
+import { Users } from '../../shared/users.model';
 
 @Component({
   selector: 'app-user-list',
@@ -9,12 +13,15 @@ import { Response } from '@angular/http';
 })
 export class UserListComponent implements OnInit {
   list_users;
+  items = [];
   servers = [
     {
-      name: 'first'
+      id: 1,
+      name: 'First'
     },
     {
-      name: 'second'
+      id: 2,
+      name: 'Second'
     }
   ];
 
@@ -22,6 +29,8 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     // this.list_users = this.userService.getAllUsers();
+
+    this.items = this.userService.getUser();
 
     this.userService.getAllUsers().subscribe(users => this.list_users = users)
   }
@@ -35,7 +44,19 @@ export class UserListComponent implements OnInit {
 
   onGet() {
     this.userService.getServers().subscribe(
-      (response) => console.log(response);
+      (response) => console.log(response)
     );
   }
+
+  onAddItem(id: number, name: string) {
+    this.userService.addUser({
+      id,
+      name
+    })
+  }
+
+  onDelete(index: number): void {
+    this.items.splice(index, 1);
+  }
+
 }

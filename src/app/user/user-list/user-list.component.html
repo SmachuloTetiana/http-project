@@ -1,6 +1,43 @@
-<ul *ngFor="let user of list_users">
-  <li>{{ user.id }} ) {{ user.name }}</li>
-</ul>
 
-<button type="button" (click)="onPost()">Send Servers</button>
-<button (click)="onGetfirebase()">Get Servers</button>
+<h3>User List</h3>
+
+<form>
+  <label for="id">Id</label>
+  <input 
+    type="text" 
+    class="form-control" 
+    id="id" 
+    name="id"
+    [(ngModel)]="id">
+  <label for="name">Name</label>
+  <input 
+    type="text" 
+    class="form-control" 
+    id="name" 
+    name="name"
+    [(ngModel)]="name">
+  <input type="button" class="btn btn-primary" value="Update">
+  <input type="button" class="btn btn-danger" value="Cancel">
+  <button type="button" class="btn btn-primary" (click)="onAddItem(id, name)">Add</button>
+</form>
+
+<table class="table table-striped">
+  <tr>
+    <td>Id</td>
+    <td>Name</td>
+    <td>Commands</td>
+  </tr>
+
+  <tr *ngFor="let item of items">
+    <td>{{ item.id }}</td>
+    <td>{{ item.name }}</td>
+    <td>
+      <button class="btn btn-primary" (click)="onEdit()">Edit</button>
+      <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+    </td>
+  </tr>
+</table>
+
+
+<!-- <button type="button" (click)="onPost()">Send Servers</button>
+<button (click)="onGet()">Get Servers</button> -->

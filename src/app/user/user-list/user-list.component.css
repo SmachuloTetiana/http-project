@@ -1,3 +1,7 @@
 ul {
     list-style: none;
 }
+
+form input[type="button"] {
+    margin: 20px 0;
+}
