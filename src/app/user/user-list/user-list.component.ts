@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../user.service';
 import { Response } from '@angular/http';  
 import { Router } from "@angular/router";  
-import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Services } from '@angular/core/src/view';
 import { Users } from '../../shared/users.model';
 
@@ -12,7 +12,10 @@ import { Users } from '../../shared/users.model';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
+  @ViewChild('nameInput') nameInputRef: ElementRef;
   list_users;
+  name;
+  signUpForm: FormGroup;
   items = [];
   servers = [
     {
@@ -29,6 +32,11 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     // this.list_users = this.userService.getAllUsers();
+
+    this.signUpForm = new FormGroup({
+      'input_id' : new FormControl(null, Validators.required),
+      'input_name' : new FormControl(null, Validators.required)
+    });
 
     this.items = this.userService.getUser();
 
@@ -50,13 +58,20 @@ export class UserListComponent implements OnInit {
 
   onAddItem(id: number, name: string) {
     this.userService.addUser({
-      id,
+      id: this.signUpForm.value,
       name
     })
   }
 
   onDelete(index: number): void {
     this.items.splice(index, 1);
+  }
+
+  onEdit(id, name) {
+   this.signUpForm.setValue({
+      input_id: id,
+      input_name: name
+   });
   }
 
 }
