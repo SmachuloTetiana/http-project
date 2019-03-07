@@ -56,15 +56,16 @@ export class UserListComponent implements OnInit {
     );
   }
 
-  onAddItem(id: number, name: string) {
+  onAddItem() {
     this.userService.addUser({
-      id: this.signUpForm.value,
-      name
+      id: this.signUpForm.value.input_id,
+      name: this.signUpForm.value.input_name
     })
   }
 
-  onDelete(index: number): void {
-    this.items.splice(index, 1);
+  onDelete(i): void {
+    // this.items.splice(index, 1);
+    this.userService.getDelete(i);
   }
 
   onEdit(id, name) {

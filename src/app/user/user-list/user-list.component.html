@@ -16,7 +16,7 @@
     formControlName="input_name">
   <input type="button" class="btn btn-primary" value="Update">
   <input type="button" class="btn btn-danger" value="Cancel">
-  <button type="button" class="btn btn-primary" (click)="onAddItem(input_id, input_name)">Add</button>
+  <button type="button" class="btn btn-primary" (click)="onAddItem()">Add</button>
 </form>
 
 <table class="table table-striped">
@@ -26,12 +26,12 @@
     <td>Commands</td>
   </tr>
 
-  <tr *ngFor="let item of items">
+  <tr *ngFor="let item of items; let i = index">
     <td>{{ item.id }}</td>
     <td>{{ item.name }}</td>
     <td>
       <button class="btn btn-primary" (click)="onEdit(item.id, item.name)">Edit</button>
-      <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+      <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
     </td>
   </tr>
 </table>
