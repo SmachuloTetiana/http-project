@@ -26,8 +26,6 @@ export class HomeComponent implements OnInit {
     //   console.log(this.weather);
     // });
 
-    // console.log('test');
-
     // apiService.getDocument()
     //   .then(documents => {
     //   console.log(documents)

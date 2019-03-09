@@ -31,8 +31,6 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    // this.list_users = this.userService.getAllUsers();
-
     this.signUpForm = new FormGroup({
       'input_id' : new FormControl(null, Validators.required),
       'input_name' : new FormControl(null, Validators.required)
@@ -64,7 +62,6 @@ export class UserListComponent implements OnInit {
   }
 
   onDelete(i): void {
-    // this.items.splice(index, 1);
     this.userService.getDelete(i);
   }
 
