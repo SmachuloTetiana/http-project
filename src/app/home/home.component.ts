@@ -20,13 +20,11 @@ export class HomeComponent implements OnInit {
   async getWeather(): Promise<any> {
     this.weather = await this.http.get(this.apiUrl).toPromise();
 
-    console.log(this.weather);
+    console.log(this.apiUrl);
     // .subscribe(data => {
     //   this.weather = data;
     //   console.log(this.weather);
     // });
-
-    // console.log('test');
 
     // apiService.getDocument()
     //   .then(documents => {

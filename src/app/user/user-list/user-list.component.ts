@@ -31,8 +31,6 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    // this.list_users = this.userService.getAllUsers();
-
     this.signUpForm = new FormGroup({
       'index': new FormControl(null),
       'input_id' : new FormControl(null, Validators.required),
