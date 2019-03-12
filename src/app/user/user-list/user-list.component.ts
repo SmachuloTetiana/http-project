@@ -78,7 +78,7 @@ export class UserListComponent implements OnInit {
   }
 
   onUpdate() {
-    const i = this.signUpForm.value.index;
+    // const i = this.signUpForm.value.index;
     const id = this.signUpForm.value.input_id;
     const name = this.signUpForm.value.input_name;
     let updatedItem = this.userService.getUser().filter((user) => {
