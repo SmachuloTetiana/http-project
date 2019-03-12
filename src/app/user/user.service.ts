@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { User } from "firebase";
 
 interface Users {
     id: number,
@@ -46,6 +47,13 @@ export class UserService {
     getDelete(index) {
         this.users.splice(index, 1)
     }
+
+
+
+  
+
+
+
 
 
     

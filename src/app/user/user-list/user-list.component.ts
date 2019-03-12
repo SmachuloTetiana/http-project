@@ -34,6 +34,7 @@ export class UserListComponent implements OnInit {
     // this.list_users = this.userService.getAllUsers();
 
     this.signUpForm = new FormGroup({
+      'index': new FormControl(null),
       'input_id' : new FormControl(null, Validators.required),
       'input_name' : new FormControl(null, Validators.required)
     });
@@ -61,18 +62,32 @@ export class UserListComponent implements OnInit {
       id: this.signUpForm.value.input_id,
       name: this.signUpForm.value.input_name
     })
+    this.signUpForm.reset();
   }
 
   onDelete(i): void {
-    // this.items.splice(index, 1);
     this.userService.getDelete(i);
   }
 
-  onEdit(id, name) {
+  onEdit(i, id, name) {
    this.signUpForm.setValue({
+      index: i,
       input_id: id,
       input_name: name
-   });
+   }); 
+  }
+
+  onUpdate() {
+    const i = this.signUpForm.value.index;
+    const id = this.signUpForm.value.input_id;
+    const name = this.signUpForm.value.input_name;
+    let updatedItem = this.userService.getUser().filter((user) => {
+      if(user.id == id) {
+        user.name = name;
+      }
+      return user;
+    })
+    this.signUpForm.reset();
   }
 
 }

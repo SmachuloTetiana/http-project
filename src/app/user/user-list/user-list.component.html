@@ -14,7 +14,7 @@
     class="form-control" 
     id="name" 
     formControlName="input_name">
-  <input type="button" class="btn btn-primary" value="Update">
+  <input type="button" class="btn btn-primary" (click)="onUpdate()" value="Update">
   <input type="button" class="btn btn-danger" value="Cancel">
   <button type="button" class="btn btn-primary" (click)="onAddItem()">Add</button>
 </form>
@@ -30,7 +30,7 @@
     <td>{{ item.id }}</td>
     <td>{{ item.name }}</td>
     <td>
-      <button class="btn btn-primary" (click)="onEdit(item.id, item.name)">Edit</button>
+      <button class="btn btn-primary" (click)="onEdit(i, item.id, item.name)">Edit</button>
       <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
     </td>
   </tr>
